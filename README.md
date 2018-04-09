@@ -38,7 +38,7 @@ import xboxController
 if xboxController.get_numControllers() > 0:
   xbox = []
   for i in range(xboxController.get_numControllers()):
-    xbox.append(xboxController.Controller())             #create an array of controllers, as many are connected
+    xbox.append(xboxController.Controller())            #create an array of controllers, as many are connected
 else:
   throw error(No controllers)
   exit();
@@ -48,7 +48,7 @@ while not xbox[0].get_start():                          #while the start button 
     print('Controller ' + i ': (x1, y1): (' + str(xbox[i].get_leftX() + ', ' + str(xbox[i].get_leftY()) + ')') 
       #print the left joystick's x and y value for each controller
     if xbox[0].get_A():
-      print("Jump!") #print jump if the A button is pushed
+      print("Jump!")                                    #print jump if the A button is pushed
 
 ```
 
