@@ -38,7 +38,7 @@ import xboxController
 if xboxController.get_numControllers() > 0:
   xbox = []
   for i in range(xboxController.get_numControllers()):
-    xbox.append(xboxController.Controller())            #create an array of controllers, as many are connected
+    xbox.append(xboxController.Controller(i))            #create an array of controllers, as many are connected
 else:
   throw error(No controllers)
   exit();
