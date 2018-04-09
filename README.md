@@ -1,22 +1,16 @@
-## xboxController
+### xboxController
 
 A simple Pygame-based class for use collecting values from an xbox controller WITHOUT needing xboxdrv installed and running (a massive pain) and WITHOUT needing a game window for pygame.
 
-## Getting Started
+### Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+Currently, this has only been officially tested for a USB-based Xbox One controller, but support is coming for more controllers.
+
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
+To run this class, you need to have pygame installed. The installation instructions are below.
 
 Install Pygame module, using pip:
 ```
@@ -27,53 +21,37 @@ To verify that pygame is installed, run a sample pygame package:
 python3 -m pygame.examples.aliens
 ```
 
+### Installing
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+Installing this package is simple
 ```
-Give an example
+git clone https://github.com/ntatko/xboxController.git
 ```
 
-### And coding style tests
+### Usage
 
-Explain what these tests test and why
+Some sample code is found below, just as an example:
 
 ```
-Give an example
+import xboxController
+
+if xboxController.get_numControllers() > 0:
+  xbox = []
+  for i in range(xboxController.get_numControllers()):
+    xbox.append(xboxController.Controller())             #create an array of controllers, as many are connected
+else:
+  throw error(No controllers)
+  exit();
+  
+while not xbox[0].get_start():                          #while the start button isn't pressed:
+  for i in range(len(xbox)):
+    print('Controller ' + i ': (x1, y1): (' + str(xbox[i].get_leftX() + ', ' + str(xbox[i].get_leftY()) + ')') 
+      #print the left joystick's x and y value for each controller
+    if xbox[0].get_A():
+      print("Jump!") #print jump if the A button is pushed
+
 ```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+This project is licensed under the MIT License
